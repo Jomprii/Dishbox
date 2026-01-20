@@ -2,12 +2,7 @@ import recipeData from "./data/recipes.json";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 
 export default function Dishbox() {
   const [search, setSearch] = useState("");
@@ -22,22 +17,22 @@ export default function Dishbox() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 cursor-pointer overflow-hidden">
           {recipeData.recipes.map((recipe) => (
-            <Card
+            <div
               key={recipe.id}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 cursor-pointer "
+              className="overflow-hidden border-2 rounded-lg "
             >
               <img
                 src={recipe.image}
                 alt={recipe.title}
-                className="w-full h-50 overflow-hidden object-cover"
+                className="w-full h-50 object-cover"
               />
               <CardContent>
                 <p>{recipe.title}</p>
                 <p>{recipe.cookingTime}</p>
               </CardContent>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
